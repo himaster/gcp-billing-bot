@@ -131,7 +131,8 @@ This application requires sensitive data—such as secret environment variables 
      - Enter `SEND_THREAD_DETAILS` as the name and set its value (for example, `true`).
 
    - **Mount the Service Account File:**
-     - Still in the **Variables & Secrets** section, click **"Add Mount"**.
+     - Before mounting the file in **"Volume Mounts"**, attach it in **Volumes** next to **Containers** section
+     - In the **Containers** section, click **"Add Mount"**.
      - Choose **Secret** and select your `billing-sa-json` secret.
      - Set the mount path to:  
        `/var/secrets/billing-sa`
@@ -140,7 +141,6 @@ This application requires sensitive data—such as secret environment variables 
 5. **Set Additional Configuration:**
    - Choose your region (e.g., `europe-west4`).
    - Configure CPU, memory, and concurrency as needed.
-   - Optionally, add any other environment variables your application requires.
 
 6. **Deploy:**
    - Click **"Create"** to deploy your Cloud Run service.
