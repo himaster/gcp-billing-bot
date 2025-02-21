@@ -32,8 +32,8 @@ This repository retrieves daily GCP billing data from BigQuery (reporting on the
 4. Create and download a JSON key file.
 5. Save the key file as service-account.json near docker-compose file.
 
-### 2. Create a Slack Bot with Necessary Privileges
 
+### 2. Create a Slack Bot with Necessary Privileges
 
 #### - Create a Slack App
 
@@ -66,7 +66,7 @@ This repository retrieves daily GCP billing data from BigQuery (reporting on the
 - Store your **Bot User OAuth Token** securely (for example, in environment variables or a secrets manager).
 - Use this token in your application when calling Slack API methods such as `chat.postMessage`.
 
-## Enabling Billing Data Export to BigQuery
+### 3. Enabling Billing Data Export to BigQuery
 
 To use this application, you must export your GCP billing data to BigQuery. Follow these steps:
 
@@ -85,7 +85,7 @@ To use this application, you must export your GCP billing data to BigQuery. Foll
    - It may take up to 24 hours for the exported data to appear in your BigQuery dataset.
 
   
-### 2. Set Environment Variables
+### 4. Set Environment Variables
 
 Configure the following environment variables (for example, in a `.env` file or via your deployment settings):
 
