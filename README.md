@@ -1,6 +1,6 @@
 # GCP Billing Cost Reporter with Slack Notifications
 
-This repository retrieves GCP billing data from BigQuery, aggregates costs by SKU and project, calculates cost deltas, and sends a formatted report to Slack. A GitHub Actions workflow builds a Docker image and pushes it to GitHub Artifact Registry. You can then deploy the image to GCP Cloud Run using the Cloud Console UI.
+This repository retrieves daily GCP billing data from BigQuery (reporting on the day before yesterday due to export delays), aggregates costs by SKU and project, calculates cost deltas, and sends a formatted report to Slack. A GitHub Actions workflow builds a Docker image and pushes it to GitHub Artifact Registry. You can then deploy the image to GCP Cloud Run using the Cloud Console UI.
 
 ![GCP Billing Bot](https://raw.githubusercontent.com/himaster/gcp-billing-bot/refs/heads/main/pic.png)
 ---
