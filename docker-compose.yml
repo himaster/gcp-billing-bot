@@ -1,0 +1,13 @@
+services:
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: europe-docker.pkg.dev/hiveon-services/images/gcp-billing-bot:latest
+    platform: linux/amd64
+    volumes:
+    - ./service-account.json:/var/secrets/billing-sa
+    env_file: .env
+    environment:
+      SEND_PROJECT_BREAKDOWN: "true"
+      SEND_THREAD_DETAILS: "true"
