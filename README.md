@@ -60,16 +60,6 @@ This repository retrieves GCP billing data from BigQuery, aggregates costs by SK
 3. After installation, copy the **Bot User OAuth Token** (it starts with `xoxb-`).  
    This token is needed to authenticate API requests.
 
-#### - (Optional) Configure Event Subscriptions
-
-If your bot needs to respond to events:
-
-1. Click **"Event Subscriptions"** in your app settings.
-2. Toggle **"Enable Events"** to **On**.
-3. Set the **Request URL** to your server’s endpoint where Slack can send event data.
-4. Under **"Subscribe to Bot Events"**, add events (e.g., `message.im` for direct messages).
-5. Click **"Save Changes"**.
-
 #### - Use the Bot Token in Your Application
 
 - Store your **Bot User OAuth Token** securely (for example, in environment variables or a secrets manager).
