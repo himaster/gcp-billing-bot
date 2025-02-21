@@ -66,6 +66,25 @@ This repository retrieves daily GCP billing data from BigQuery (reporting on the
 - Store your **Bot User OAuth Token** securely (for example, in environment variables or a secrets manager).
 - Use this token in your application when calling Slack API methods such as `chat.postMessage`.
 
+## Enabling Billing Data Export to BigQuery
+
+To use this application, you must export your GCP billing data to BigQuery. Follow these steps:
+
+1. **Open Billing Settings:**
+   - Go to the [Google Cloud Console Billing page](https://console.cloud.google.com/billing).
+   - Select your billing account.
+
+2. **Enable BigQuery Export:**
+   - In the left-hand menu, click on **Billing export**.
+   - Under **BigQuery export**, click **Edit settings**.
+   - Choose an existing BigQuery dataset or create a new one to store your billing data.
+   - Enable the **Daily Cost Export** option.
+   - Click **Save** to apply your settings.
+
+3. **Wait for Data Population:**
+   - It may take up to 24 hours for the exported data to appear in your BigQuery dataset.
+
+  
 ### 2. Set Environment Variables
 
 Configure the following environment variables (for example, in a `.env` file or via your deployment settings):
