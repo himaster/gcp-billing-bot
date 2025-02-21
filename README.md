@@ -75,3 +75,6 @@ SLACK_CHANNEL_ID=your-channel-or-user-id
 SEND_PROJECT_BREAKDOWN=true
 SEND_THREAD_DETAILS=true
 
+## Running the Code Locally
+This project includes a `Dockerfile` that defines the image for the GCP Billing Cost Reporter. You can run the application locally using Docker Compose.
+`docker-compose up --build`
