@@ -142,5 +142,7 @@ This application requires sensitive data—such as secret environment variables 
    - Configure CPU, memory, and concurrency as needed.
    - Optionally, add any other environment variables your application requires.
 
+## Cleanup
+Remove any unused resources (such as Cloud Run services or service accounts) to avoid unnecessary charges.
 6. **Deploy:**
    - Click **"Create"** to deploy your Cloud Run service.
