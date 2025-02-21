@@ -73,8 +73,7 @@ Configure the following environment variables (for example, in a `.env` file or 
 ```env
 SLACK_API_TOKEN=your-slack-bot-token
 SLACK_CHANNEL_ID=your-channel-or-user-id
-SEND_PROJECT_BREAKDOWN=true
-SEND_THREAD_DETAILS=true
+BQ_TABLE=[project name].all_billing_data.gcp_billing_export_resource_v1_[billing account ID]
 ```
 
 ## Running the Code Locally
