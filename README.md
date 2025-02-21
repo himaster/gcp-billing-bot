@@ -74,7 +74,72 @@ SLACK_API_TOKEN=your-slack-bot-token
 SLACK_CHANNEL_ID=your-channel-or-user-id
 SEND_PROJECT_BREAKDOWN=true
 SEND_THREAD_DETAILS=true
+```
 
 ## Running the Code Locally
 This project includes a `Dockerfile` that defines the image for the GCP Billing Cost Reporter. You can run the application locally using Docker Compose.
 `docker-compose up --build`
+
+## Deploying to GCP Cloud Run via UI with Secret Manager Integration
+
+This application requires sensitive data—such as secret environment variables and a service account JSON file—to operate. To keep these secrets secure, store them in Secret Manager and mount them to your Cloud Run service.
+
+### 1. Create Secrets in Secret Manager
+
+1. **Open Secret Manager:**
+   - Go to the [Secret Manager Console](https://console.cloud.google.com/security/secret-manager).
+
+2. **Create Secrets:**
+   - **SLACK_API_TOKEN:**
+     - Click **"Create Secret"**.
+     - Name it `SLACK_API_TOKEN` and paste your Slack Bot token.
+   - **SLACK_CHANNEL_ID:**
+     - Create another secret named `SLACK_CHANNEL_ID` and paste your target channel or user ID.
+   - **Service Account File:**
+     - Create a secret (e.g., `billing-sa`) and upload your service account JSON file contents.
+
+### 2. Deploy Your Service in Cloud Run
+
+1. **Open Cloud Run:**
+   - Go to the [Cloud Run Console](https://console.cloud.google.com/run).
+
+2. **Create a New Service:**
+   - Click **"Create Service"**.
+   - Enter a service name (e.g., `gcp-billing-reporter`).
+
+3. **Specify the Container Image:**
+   - In **Container image URL**, enter the URL of your Docker image (for example:  
+     `ghcr.io/<your-github-username>/<repository-name>:latest`).
+
+4. **Configure Environment Variables and Secrets:**
+
+   - In the **Variables & Secrets** section, add the following environment variables by clicking **"Reference a Secret"** for each:
+     - **SLACK_API_TOKEN:**  
+       Select the secret version of your `SLACK_API_TOKEN`.
+     - **SLACK_CHANNEL_ID:**  
+       Select the secret version of your `SLACK_CHANNEL_ID`.
+
+   Your application also uses two non-secret environment variables. In the same **Variables & Secrets** section, add these as plain environment variables:
+
+   - **SEND_PROJECT_BREAKDOWN**:  
+     - Click **"Add Variable"**.
+     - Enter `SEND_PROJECT_BREAKDOWN` as the name and set its value (for example, `true`).
+
+   - **SEND_THREAD_DETAILS**:  
+     - Click **"Add Variable"**.
+     - Enter `SEND_THREAD_DETAILS` as the name and set its value (for example, `true`).
+
+   - **Mount the Service Account File:**
+     - Still in the **Variables & Secrets** section, click **"Add Mount"**.
+     - Choose **Secret** and select your `billing-sa-json` secret.
+     - Set the mount path to:  
+       `/var/secrets/billing-sa`
+     - This makes the service account file available to your application.
+
+5. **Set Additional Configuration:**
+   - Choose your region (e.g., `europe-west4`).
+   - Configure CPU, memory, and concurrency as needed.
+   - Optionally, add any other environment variables your application requires.
+
+6. **Deploy:**
+   - Click **"Create"** to deploy your Cloud Run service.
