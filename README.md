@@ -30,7 +30,7 @@ This repository retrieves daily GCP billing data from BigQuery (reporting on the
    - *BigQuery Data Viewer*
    - *BigQuery Job User*
 4. Create and download a JSON key file.
-5. Save the key file at the path specified in the code (default: `/var/secrets/billing-sa`), or update the `SERVICE_ACCOUNT_FILE` variable accordingly.
+5. Save the key file as service-account.json near docker-compose file.
 
 ### 2. Create a Slack Bot with Necessary Privileges
 
