@@ -168,6 +168,10 @@ def get_gcp_cost(request):
         project_totals = {}# Totals by project
         
         for r in result:
+            # Skip rows with a cost of 0.00
+            if r.yesterday_cost == 0:
+                continue
+
             project = r.project_id
             overall_total_yesterday += r.yesterday_cost
             overall_total_day_before += (r.day_before_cost or 0)
